@@ -1,12 +1,9 @@
 <?php
-    include './mvc/models/model.php';
+    include './mvc/Models/model.php';
 
     class Crawler {
         public $ch;
         public $url;
-        public $title;
-        public $content;
-        public $date;
         public $patternTitle;
         public $patternContent;
         public $partternDate;
@@ -26,18 +23,18 @@
 
         function regexData() {
             $this->crawler();
-            preg_match($this ->patternTitle, $this ->data, $matchesTitle);
-            preg_match($this ->patternContent, $this ->data, $matchesContent);
-            preg_match($this ->patternDate, $this ->data, $matchesDate);
+            preg_match($this->patternTitle, $this->data, $matchesTitle);
+            preg_match_all($this->patternContent, $this->data, $matchesContent);
+            preg_match($this->patternDate, $this->data, $matchesDate);
             
             if(isset($matchesTitle[1])) {
-                $this ->title = $matchesTitle[1];
+                $this->title = $matchesTitle[1];
             }
             if(isset($matchesContent[1])) {
-                $this ->content = $matchesContent[1];
+                $this->content = $matchesContent[1];
             }
             if(isset($matchesDate[1])) {
-                $this ->date = $matchesDate[1];
+                $this->date = $matchesDate[1];
             }
         }
     }
