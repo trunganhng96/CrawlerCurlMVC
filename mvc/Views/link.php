@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- <link rel="stylesheet" href="../../../public/css/style.css"> -->
+    <style><?php include './public/css/style.css' ?></style>
     <title>SHOW DATA</title>
 </head>
 <body>
-    <div class = "dienLink" style="width: 30%; margin:0px auto; padding-bottom: 20px ; text-align: center; border: 1px solid #DDDDDD">
-        <h3 style="background: #009688; color: white; padding: 5px">Dien Link tai day</h3>
-        <form action = "" method = "POST" style="margin:0px auto">
-            <table style="margin: 20px auto">
+    <div class = "dienLink">
+        <h3>Dien Link tai day</h3>
+        <form action = "" method = "POST">
+            <table>
                 <tr>
                     <td><input type = "text" name = "getLink" placeholder = "url"></td>
                 </tr>

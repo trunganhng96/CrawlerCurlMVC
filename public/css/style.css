@@ -1,7 +1,48 @@
 .list {
-    background: red;
+    margin: auto;
+}
+
+.bg-info {
+    text-align: center;
+    color: white;
+}
+
+.thead-dark {
+    text-align: center;
+}
+
+.id {
+    text-align: center;
+}
+
+.content {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    max-height: 3.2em;
+    line-height: 1.3em;
 }
 
 .dienLink {
-    margin: auto; 
+    width: 30%;
+    margin: 0px auto;
+    padding-bottom: 20px;
+    text-align: center;
+    border: 1px solid #DDDDDD;
+}
+
+.dienLink h3 {
+    background: #009688;
+    color: white;
+    padding: 5px;
+}
+
+.dienLink form {
+    margin: 0px auto;
+}
+
+.dienLink table {
+    margin: 20px auto;
 }

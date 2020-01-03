@@ -57,7 +57,7 @@ include_once './mvc/Models/model.php';
         }
 
         function showDataTable() {
-            // lay du lieu tu database
+            // lay toan bo du lieu tu database
             $db = new Model();
             $data = $db->getAllData();
 
