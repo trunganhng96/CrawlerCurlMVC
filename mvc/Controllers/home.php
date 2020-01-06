@@ -65,10 +65,13 @@ include_once './mvc/Models/model.php';
             $this->view("list", $data);
         }
 
-        // function showDataDetail() {
-        //     $db = new Model();
+        function showDataDetail() {
+            // lay du lieu theo ID
+            $db = new Model();
+            $data = $db->getEachData();
 
-        //     $this->view("detail");
-        // }
+            // render detail.php
+            $this->view("detail", $data);
+        }
     }
 ?>

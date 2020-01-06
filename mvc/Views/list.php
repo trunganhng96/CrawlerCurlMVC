@@ -36,8 +36,8 @@
                 <tr>
                     <td class="stt" scope="row"><?php echo $stt; ?></td>
                     <td><?php echo $value['savedb_link']; ?></td>
-                    <td><?php echo $value['savedb_title']; ?></td>
-                    <td class="content"><a href="http://192.168.31.123/CrawlerCurlMVC/home/showDataDetail"  target="self"><?php print_r($value['savedb_content']); ?></a></td>
+                    <td><a href = "http://localhost/CrawlerCurlMVC/home/showDataDetail?id=<?= $value['savedb_id']?>" target="self"><?php echo $value['savedb_title']; ?></a></td>
+                    <td class="content"><?php print_r($value['savedb_content']); ?></td>
                     <td><?php echo $value['savedb_date']; ?></td>
                 </tr>
                 <?php

@@ -7,8 +7,8 @@
     <title>SHOW DATADETAIL</title>
 </head>
 <body>
-<?php
-    
-?>
+    <?php
+       var_dump($data);
+    ?>
 </body>
 </html>

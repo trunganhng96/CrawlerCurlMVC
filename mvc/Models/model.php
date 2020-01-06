@@ -28,7 +28,7 @@
         // lay du lieu
         function getData() {
             if( isset($this->result) ) {
-                $data = mysqli_fetch_array($this->result);
+                $data = mysqli_fetch_assoc($this->result);
             } else {
                 $data = 0;
             }
@@ -59,24 +59,40 @@
             return $num;
         }
 
-        // function getEachData() {
-        //     if(isset($_GET['id'])) {
-        //         $id = $_GET['id'];
-                
-        //         $sql = "SELECT savedb_title, savedb_content, savedb_date  FROM savedb WHERE savedb_id = {$id}";
-        //         $this->execute($sql);
-        //         if ($this ->num_rows > 0) {
-        //             while($num = $result->fetch_assoc()) {
-        //             echo $num["savedb_title"] . $num["savedb_content"] . $num["savedb_date"] . "<br>";
-        //             }
-        //         }
-        //     }
-        // }
-        
+        // lay du lieu theo id
+        function getEachData() {
+            $sql = "SELECT savedb_id, savedb_title FROM savedb";
+            $this->execute($sql);
+            if ($this->num_rows() == 0) {
+                $data = 0;
+            }else if($this->num_rows() > 0) {
+                while( $row = $this->getData() ) {
+            ?>
+                <a href = "?id=<?= $row['savedb_id'] ?>"> <?= $row['savedb_title'] ?> </a> <br>
+            <?php
+                }
+            }else {
+                echo "No Data";
+            }
 
+            if( isset($_GET['id']) ) {
+                $id = $_GET['id'];
+                $sql = "SELECT savedb_title, savedb_content, savedb_date FROM savedb WHERE savedb_id = {$id}";
+                $this->execute($sql);
+                if ($this->num_rows() == 0) {
+                    $data = 0;
+                }else {
+                    while( $row = $this->getData() ) {
+                        $data[] = $row;
+                        return $data = $row["savedb_title"] . $row["savedb_content"] . $row["savedb_date"] . "<br>" ; 
+                    }
+                }
+            }
+        }
+        
         // them du lieu
         function insertData($source, $title, $content, $date) {
-            $sql = "INSERT INTO savedb(savedb_id, savedb_link, savedb_title, savedb_content, savedb_date) VALUES(null, '$source', '$title', '$content', '$date')";
+            $sql = "INSERT INTO savedb(savedb_link, savedb_title, savedb_content, savedb_date) VALUES('$source', '$title', '$content', '$date')";
             return $this->execute($sql);
         } 
     }

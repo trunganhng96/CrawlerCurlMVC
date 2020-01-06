@@ -20,7 +20,7 @@
                 </tr>
             </table>
         </form>
-        <a href="http://192.168.31.123/CrawlerCurlMVC/home/showDataTable" target="blank">Show DataTable</a>
+        <a href="http://localhost/CrawlerCurlMVC/home/showDataTable" target="blank">Show DataTable</a>
     </div>
 </body>
 </html>
