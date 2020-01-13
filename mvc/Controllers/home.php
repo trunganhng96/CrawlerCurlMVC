@@ -20,7 +20,7 @@ include_once './mvc/DesignPatterns/Pages/Vietnamnet.php';
         function showData() {
             // render link.php
             $this->view("link");
-            
+
             // xu ly url
             if( isset($_POST['submit']) ) {
                 $curl = new Crawler();
@@ -69,7 +69,7 @@ include_once './mvc/DesignPatterns/Pages/Vietnamnet.php';
 
                 // them du lieu vao database
                 $db = new Model();
-                $data = $db->insertData($pages->source, $pages->getTitle(), implode("", $pages->getContent() ), $pages->getDate());
+                $data = $db->insertData( $pages->source, $pages->getTitle(), implode("", $pages->getContent() ), $pages->getDate() );
             }
         }
 

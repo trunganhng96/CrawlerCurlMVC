@@ -35,12 +35,14 @@
     padding-bottom: 20px;
     text-align: center;
     border: 1px solid #DDDDDD;
+    background-color: #DDDDDD;
 }
 
 .dienLink h3 {
     background: #009688;
     color: white;
     padding: 5px;
+    margin: 0px !important;
 }
 
 .dienLink form {
