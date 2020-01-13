@@ -1,4 +1,10 @@
 <?php
+// namespace mvc\Core;
+
+// use mvc\Controllers\Home;
+// use mvc\Core\Controller;
+// use mvc\Libs\Crawler;
+
     class Application {
         protected $controller = null;
         protected $action = null;
@@ -14,6 +20,7 @@
             }
             require_once "./mvc/Controllers/".$this->controller.".php";
             $this->controller = new $this->controller;
+
 
             // Action
             if( isset($arr[1]) ) {
