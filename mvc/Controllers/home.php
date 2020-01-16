@@ -10,11 +10,20 @@
 
 include './mvc/Libs/crawler.php';
 include_once './mvc/Models/model.php';
-// include_once './mvc/DesignPatterns/DPtest.php';
-include_once './mvc/DesignPatterns/factory.php';
+
+// include_once './mvc/DesignPatterns/AFtest.php';
+include_once './mvc/DesignPatterns/factoryProducer.php';
+include_once './mvc/DesignPatterns/abstractFactory.php';
+include_once './mvc/DesignPatterns/concreteFactory.php';
 include_once './mvc/DesignPatterns/Pages/Dantri.php';
 include_once './mvc/DesignPatterns/Pages/Vnexpress.php';
 include_once './mvc/DesignPatterns/Pages/Vietnamnet.php';
+
+// include_once './mvc/DesignPatterns/DPtest.php';
+// include_once './mvc/DesignPatterns/factory.php';
+// include_once './mvc/DesignPatterns/Pages/Dantri.php';
+// include_once './mvc/DesignPatterns/Pages/Vnexpress.php';
+// include_once './mvc/DesignPatterns/Pages/Vietnamnet.php';
 
     class Home extends Controller {
         function showData() {
@@ -37,21 +46,21 @@ include_once './mvc/DesignPatterns/Pages/Vietnamnet.php';
 
                 switch($splitString[0]) {
                     case "dantri.com.vn" : {
-                        $pagesFactory = new DantriFactory();
-                        $pagesFactory->makeIgetData();
-                        $pages = new Dantri();
+                        $pagesFactory = FactoryProducer::getFactory('page1');
+                        $pages = $pagesFactory->getIgetData('IgetData');
+                        
                     break;
                     }
                     case "vnexpress.net" : {
-                        $pagesFactory = new VnexpressFactory();
-                        $pagesFactory->makeIgetData();
-                        $pages = new Vnexpress();
+                        $pagesFactory = FactoryProducer::getFactory('page2');
+                        $pages = $pagesFactory->getIgetData('IgetData');
+                        
                     break;
                     }
                     case "vietnamnet.vn" : {
-                        $pagesFactory = new VietnamnetFactory();
-                        $pagesFactory->makeIgetData();
-                        $pages = new Vietnamnet();
+                        $pagesFactory = FactoryProducer::getFactory('page3');
+                        $pages = $pagesFactory->getIgetData('IgetData');
+                        
                     break;
                     }
                 }
@@ -66,6 +75,27 @@ include_once './mvc/DesignPatterns/Pages/Vietnamnet.php';
                     echo $pages->getDate();
                     
                 }
+
+                // switch($splitString[0]) {
+                //     case "dantri.com.vn" : {
+                //         $pagesFactory = new DantriFactory();
+                //         $pagesFactory->makeIgetData();
+                //         $pages = new Dantri();
+                //     break;
+                //     }
+                //     case "vnexpress.net" : {
+                //         $pagesFactory = new VnexpressFactory();
+                //         $pagesFactory->makeIgetData();
+                //         $pages = new Vnexpress();
+                //     break;
+                //     }
+                //     case "vietnamnet.vn" : {
+                //         $pagesFactory = new VietnamnetFactory();
+                //         $pagesFactory->makeIgetData();
+                //         $pages = new Vietnamnet();
+                //     break;
+                //     }
+                // }
 
                 // them du lieu vao database
                 $db = new Model();

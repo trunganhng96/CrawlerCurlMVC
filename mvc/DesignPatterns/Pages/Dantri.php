@@ -1,7 +1,10 @@
 <?php
-include_once './mvc/DesignPatterns/interface.php';
-include_once './mvc/Libs/crawler.php';
 
+include_once './mvc/Libs/crawler.php';
+include_once './mvc/DesignPatterns/abstractProduct.php';
+// include_once './mvc/DesignPatterns/interface.php';
+
+    // B2: Product
     class Dantri extends Crawler implements IgetData {
         public $source = 'dantri.com.vn';
         public function getTitle() {
