@@ -1,8 +1,4 @@
 <?php
-// namespace mvc\Libs;
-
-// use mvc\Models\Model;
-
 include './mvc/Models/model.php';
 
     class Crawler {
@@ -22,7 +18,7 @@ include './mvc/Models/model.php';
             curl_setopt($ch, CURLOPT_MAXREDIRS, 4);
             curl_setopt($ch, CURLOPT_HTTPGET, true);
             curl_setopt($ch, CURLOPT_HEADER, true);
-            $this ->data = curl_exec($ch);
+            $this->data = curl_exec($ch);
             curl_close($ch);
         }
     }

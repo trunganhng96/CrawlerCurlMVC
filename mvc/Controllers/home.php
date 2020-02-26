@@ -1,29 +1,20 @@
 <?php
-// namespace mvc\Controllers;
-
-// use mvc\Libs\Crawler;
-// use mvc\DesignPatterns\DantriFactory;
-// use mvc\DesignPatterns\Dantri;
-// use mvc\Models\Model;
-// use mvc\Core\Application;
-// use mvc\Core\Controller;
-
 include './mvc/Libs/crawler.php';
 include_once './mvc/Models/model.php';
 
-// include_once './mvc/DesignPatterns/AFtest.php';
-include_once './mvc/DesignPatterns/factoryProducer.php';
-include_once './mvc/DesignPatterns/abstractFactory.php';
-include_once './mvc/DesignPatterns/concreteFactory.php';
-include_once './mvc/DesignPatterns/Pages/Dantri.php';
-include_once './mvc/DesignPatterns/Pages/Vnexpress.php';
-include_once './mvc/DesignPatterns/Pages/Vietnamnet.php';
-
-// include_once './mvc/DesignPatterns/DPtest.php';
-// include_once './mvc/DesignPatterns/factory.php';
+// include_once './mvc/DesignPatterns/Test/AFtest.php';
+// include_once './mvc/DesignPatterns/factoryProducer.php';
+// include_once './mvc/DesignPatterns/abstractFactory.php';
+// include_once './mvc/DesignPatterns/concreteFactory.php';
 // include_once './mvc/DesignPatterns/Pages/Dantri.php';
 // include_once './mvc/DesignPatterns/Pages/Vnexpress.php';
 // include_once './mvc/DesignPatterns/Pages/Vietnamnet.php';
+
+// include_once './mvc/DesignPatterns//Test/FMtest.php';
+include_once './mvc/DesignPatterns/factory.php';
+include_once './mvc/DesignPatterns/Pages/Dantri.php';
+include_once './mvc/DesignPatterns/Pages/Vnexpress.php';
+include_once './mvc/DesignPatterns/Pages/Vietnamnet.php';
 
     class Home extends Controller {
         function showData() {
@@ -44,23 +35,44 @@ include_once './mvc/DesignPatterns/Pages/Vietnamnet.php';
                     } 
                 }
 
+                // switch($splitString[0]) {
+                //     case "dantri.com.vn" : {
+                //         $pagesFactory = FactoryProducer::getFactory('page1');
+                //         $pages = $pagesFactory->getIgetData('IgetData');
+                        
+                //     break;
+                //     }
+                //     case "vnexpress.net" : {
+                //         $pagesFactory = FactoryProducer::getFactory('page2');
+                //         $pages = $pagesFactory->getIgetData('IgetData');
+                        
+                //     break;
+                //     }
+                //     case "vietnamnet.vn" : {
+                //         $pagesFactory = FactoryProducer::getFactory('page3');
+                //         $pages = $pagesFactory->getIgetData('IgetData');
+                        
+                //     break;
+                //     }
+                // }
+
                 switch($splitString[0]) {
                     case "dantri.com.vn" : {
-                        $pagesFactory = FactoryProducer::getFactory('page1');
-                        $pages = $pagesFactory->getIgetData('IgetData');
-                        
+                        $pagesFactory = new DantriFactory();
+                        $pagesFactory->makeIgetData();
+                        $pages = new Dantri();
                     break;
                     }
                     case "vnexpress.net" : {
-                        $pagesFactory = FactoryProducer::getFactory('page2');
-                        $pages = $pagesFactory->getIgetData('IgetData');
-                        
+                        $pagesFactory = new VnexpressFactory();
+                        $pagesFactory->makeIgetData();
+                        $pages = new Vnexpress();
                     break;
                     }
                     case "vietnamnet.vn" : {
-                        $pagesFactory = FactoryProducer::getFactory('page3');
-                        $pages = $pagesFactory->getIgetData('IgetData');
-                        
+                        $pagesFactory = new VietnamnetFactory();
+                        $pagesFactory->makeIgetData();
+                        $pages = new Vietnamnet();
                     break;
                     }
                 }
@@ -76,27 +88,6 @@ include_once './mvc/DesignPatterns/Pages/Vietnamnet.php';
                     
                 }
 
-                // switch($splitString[0]) {
-                //     case "dantri.com.vn" : {
-                //         $pagesFactory = new DantriFactory();
-                //         $pagesFactory->makeIgetData();
-                //         $pages = new Dantri();
-                //     break;
-                //     }
-                //     case "vnexpress.net" : {
-                //         $pagesFactory = new VnexpressFactory();
-                //         $pagesFactory->makeIgetData();
-                //         $pages = new Vnexpress();
-                //     break;
-                //     }
-                //     case "vietnamnet.vn" : {
-                //         $pagesFactory = new VietnamnetFactory();
-                //         $pagesFactory->makeIgetData();
-                //         $pages = new Vietnamnet();
-                //     break;
-                //     }
-                // }
-
                 // them du lieu vao database
                 $db = new Model();
                 $data = $db->insertData( $pages->source, $pages->getTitle(), implode("", $pages->getContent() ), $pages->getDate() );
@@ -111,6 +102,15 @@ include_once './mvc/DesignPatterns/Pages/Vietnamnet.php';
             // render list.php 
             $this->view("list", $data);
         }
+
+        // function showDataDetail() {
+        //     // lay du lieu theo ID
+        //     $db = new Model();
+        //     $data = $db->getEachData();
+    
+        //     // render detail.php
+        //     $this->view("detail", $row);
+        // }
     }
 ?>
 

@@ -1,6 +1,4 @@
 <?php
-// namespace mvc\Core;
-
     class Controller {
         function model($model) {
             // goi den file trong thu muc Models

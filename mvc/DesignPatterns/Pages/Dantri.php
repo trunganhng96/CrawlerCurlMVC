@@ -1,12 +1,12 @@
 <?php
-
 include_once './mvc/Libs/crawler.php';
-include_once './mvc/DesignPatterns/abstractProduct.php';
-// include_once './mvc/DesignPatterns/interface.php';
+include_once './mvc/DesignPatterns/interface.php';
+// include_once './mvc/DesignPatterns/abstractProduct.php';
 
     // B2: Product
     class Dantri extends Crawler implements IgetData {
         public $source = 'dantri.com.vn';
+       
         public function getTitle() {
             preg_match('/\<h1 class="fon31 mgb15"\>(.*)\<\/h1\>/isu', $this->data, $matchesTitle);
             if( isset($matchesTitle[1]) ) {
@@ -26,6 +26,7 @@ include_once './mvc/DesignPatterns/abstractProduct.php';
             if( isset($matchesDate[1]) ) {
                 return $matchesDate[1];
             } 
+            
         }
     }
 ?>

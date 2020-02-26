@@ -1,7 +1,7 @@
 <?php
 include_once './mvc/Libs/crawler.php';
-include_once './mvc/DesignPatterns/abstractProduct.php';
-// include_once './mvc/DesignPatterns/interface.php';
+include_once './mvc/DesignPatterns/interface.php';
+// include_once './mvc/DesignPatterns/abstractProduct.php';
 
 // B2: Product
     class Vietnamnet extends Crawler implements IgetData {

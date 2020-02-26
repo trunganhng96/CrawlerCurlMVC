@@ -1,12 +1,10 @@
 <?php
-// namespace mvc\Models;
-
     class Model {
         protected $hostname = 'localhost';
         protected $username = 'root';
         protected $password = '';
         protected $dbname = 'CrawlerCurlMVC';
-
+                                               
         public $conn = null;
         public $result = null;
 
@@ -50,6 +48,22 @@
             }
             return $data;
         }
+
+        // function getEachData() {
+        //     if( isset($_GET['id']) ) {
+        //         $id = $_GET['id'];
+        //         $sql = "SELECT savedb_title, savedb_content, savedb_date FROM savedb WHERE savedb_id = {$id}";
+        //     }
+        //     $this->execute($sql);
+        //     if ($this->num_rows() == 0) {
+        //         $data = 0;
+        //     }else {
+        //         while( $row = $this->getData() ) {
+        //             $data[] = $row;
+        //             return $data = $row["savedb_title"] . $row["savedb_content"] . $row["savedb_date"] . "<br>" ;
+        //         }
+        //     }
+        // }
 
         // dem so ban ghi
         function num_rows() {
