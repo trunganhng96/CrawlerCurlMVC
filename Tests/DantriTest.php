@@ -3,28 +3,40 @@
     
     class DantriTest extends TestCase {
         public function testDataTitleDantriHasReturned() {
-            $getdata = $this->getMockBuilder(Dantri::class)
-                            ->setMethods(['getTitle'])
-                            ->getMock();
-            $getdata->method('getTitle')->willReturn(true);
+            // $getdata = $this->getMockBuilder(Dantri::class)
+            //                 ->setMethods(['getTitle'])
+            //                 ->getMock();
+            // $getdata->method('getTitle')->willReturn(true);
+            // $result = $getdata->getTitle('hello');
+            // $this->assertTrue($result);
+            $getdata = Mockery::mock('Dantri');
+            $getdata->shouldReceive('getTitle')->once()->andReturn(true);
             $result = $getdata->getTitle('hello');
             $this->assertTrue($result);
         }
 
         public function testDataContentDantriHasReturned() {
-            $getdata = $this->getMockBuilder(Dantri::class)
-                            ->setMethods(['getContent'])
-                            ->getMock();
-            $getdata->method('getContent')->willReturn(true);
+            // $getdata = $this->getMockBuilder(Dantri::class)
+            //                 ->setMethods(['getContent'])
+            //                 ->getMock();
+            // $getdata->method('getContent')->willReturn(true);
+            // $result = $getdata->getContent('hello');
+            // $this->assertTrue($result);
+            $getdata = Mockery::mock('Dantri');
+            $getdata->shouldReceive('getContent')->once()->andReturn(true);
             $result = $getdata->getContent('hello');
             $this->assertTrue($result);
         }
 
         public function testDataDateDantriHasReturned() {
-            $getdata = $this->getMockBuilder(Dantri::class)
-                            ->setMethods(['getDate'])
-                            ->getMock();
-            $getdata->method('getDate')->willReturn(true);
+            // $getdata = $this->getMockBuilder(Dantri::class)
+            //                 ->setMethods(['getDate'])
+            //                 ->getMock();
+            // $getdata->method('getDate')->willReturn(true);
+            // $result = $getdata->getDate('13/10/1996');
+            // $this->assertTrue($result);
+            $getdata = Mockery::mock('Dantri');
+            $getdata->shouldReceive('getDate')->once()->andReturn(true);
             $result = $getdata->getDate('13/10/1996');
             $this->assertTrue($result);
         }
