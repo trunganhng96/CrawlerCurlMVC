@@ -36,7 +36,7 @@
         }
 
         // lay toan bo du lieu
-        function getAllData() {
+        function getAllData($data) {
             $sql = "SELECT * FROM savedb";
             $this->execute($sql);
             if($this->num_rows() == 0) {

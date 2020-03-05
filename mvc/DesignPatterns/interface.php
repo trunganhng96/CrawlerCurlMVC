@@ -1,7 +1,7 @@
 <?php
     interface IgetData {
-        public function getTitle();
-        public function getContent();
-        public function getDate();
+        public function getTitle($data);
+        public function getContent($data);
+        public function getDate($data);
     }
 ?>

@@ -2,31 +2,48 @@
     use PHPUnit\Framework\TestCase;
 
     class ModelTest extends TestCase {
-        public function testDataHasInserted() {
+        public function dataProvider() {
+            return [
+                ['dantri.com.vn'],
+                ['hello'],
+                ['hello'],
+                ['13/10/1996']
+            ];
+        }
+        /**
+         * @dataProvider dataProvider
+         */
+        public function testDataHasInserted($data) {
             // $model = $this->getMockBuilder(Model::class)
             //               ->setMethods(['insertData'])
             //               ->getMock();
-            // $model->method('insertData')->willReturn(true);
-            // $result = $model->insertData('dantri.com.vn', 'title', 'content', 'date');
-            // $this->assertTrue($result);
             $model = Mockery::mock('Model');
-            $model->shouldReceive('insertData')->once()->andReturn(true);
-            $result = $model->insertData('dantri.com.vn', 'hello', 'hello', '13/10/1996');
-            $this->assertTrue($result);
+            $model->shouldReceive('insertData')->once();
+            $result = $model->insertData($data);
+            $this->assertEquals('', $result);
         }
 
-        public function testAllDataHasDisplay() {
+
+
+        public function AllDataProvider() {
+            return [
+                ['dantri.com.vn'],
+                ['hello'],
+                ['hello'],
+                ['13/10/1996']
+            ];
+        }
+        /**
+         * @dataProvider AlldataProvider
+         */
+        public function testAllDataHasDisplay($data) {
             // $allData = $this->getMockBuilder(Model::class)
             //                 ->setMethods(['getAllData'])
             //                 ->getMock();
-            // $allData->method('getAllData')
-            //         ->willReturn(true);
-            // $result = $allData->getAllData('dantri.com.vn', 'title', 'content', 'date');
-            // $this->assertTrue($result);
             $allData = Mockery::mock('Model');
-            $allData->shouldReceive('getAllData')->once()->andReturn(true);
-            $result = $allData->getAllData('dantri.com.vn', 'hello', 'hello', '13/10/1996');
-            $this->assertTrue($result);
+            $allData->shouldReceive('getAllData')->once();
+            $result = $allData->getAllData($data);
+            $this->assertEquals('', $result);
         }
     }
 ?>

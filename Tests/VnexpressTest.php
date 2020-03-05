@@ -1,44 +1,63 @@
 <?php
     use PHPUnit\Framework\TestCase;
     
-    class VnexpressTest extends TestCase {
-        public function testDataTitleVnexpressHasReturned() {
-            // $getdata = $this->getMockBuilder(Vnexpress::class)
+    class VnexpressTest extends TestCase { 
+        public function dataTitleProvider() {
+            return [
+                ['<h1 class="fon31 mgb15">hello</h1>']
+            ];
+        }
+        /**
+         * @dataProvider dataTitleProvider
+         */
+        public function testDataTitleVnexpressHasReturned($data) {
+            // $getdata = $this->getMockBuilder(Dantri::class)
             //                 ->setMethods(['getTitle'])
             //                 ->getMock();
-            // $getdata->method('getTitle')->willReturn(true);
-            // $result = $getdata->getTitle('hello');
-            // $this->assertTrue($result);
             $getdata = Mockery::mock('Vnexpress');
-            $getdata->shouldReceive('getTitle')->once()->andReturn(true);
-            $result = $getdata->getTitle('hello');
-            $this->assertTrue($result);
+            $getdata->shouldReceive('getTitle')->once();
+            $result = $getdata->getTitle($data);
+            $this->assertEquals('hello',$result);
         }
 
-        public function testDataContentVnexpressHasReturned() {
-            // $getdata = $this->getMockBuilder(Vnexpress::class)
+
+
+        public function dataContentProvider() {
+            return [
+                ['<div id="divNewsContent" class="fon34 mt3 mr2 fon43 detail-content">hello<div class="news-tag">']
+            ];
+        }
+        /**
+         * @dataProvider dataContentProvider
+         */
+        public function testDataContentVnexpressHasReturned($data) {
+            // $getdata = $this->getMockBuilder(Dantri::class)
             //                 ->setMethods(['getContent'])
             //                 ->getMock();
-            // $getdata->method('getContent')->willReturn(true);
-            // $result = $getdata->getContent('hello');
-            // $this->assertTrue($result);
             $getdata = Mockery::mock('Vnexpress');
-            $getdata->shouldReceive('getContent')->once()->andReturn(true);
-            $result = $getdata->getContent('hello');
-            $this->assertTrue($result);
+            $getdata->shouldReceive('getContent')->once();
+            $result = $getdata->getContent($data);
+            $this->assertEquals('hello',$result);
         }
 
-        public function testDataDateVnexpressHasReturned() {
-            // $getdata = $this->getMockBuilder(Vnexpress::class)
+
+
+        public function dataDateProvider() {
+            return [
+                ['<span class="fr fon7 mr2 tt-capitalize">13/10/1996<p class="detail_subtitle"></p>']
+            ];
+        }
+        /**
+         * @dataProvider dataDateProvider
+         */
+        public function testDataDateVnexpressHasReturned($data) {
+            // $getdata = $this->getMockBuilder(Dantri::class)
             //                 ->setMethods(['getDate'])
             //                 ->getMock();
-            // $getdata->method('getDate')->willReturn(true);
-            // $result = $getdata->getDate('13/10/1996');
-            // $this->assertTrue($result);
             $getdata = Mockery::mock('Vnexpress');
-            $getdata->shouldReceive('getDate')->once()->andReturn(true);
-            $result = $getdata->getDate('13/10/1996');
-            $this->assertTrue($result);
+            $getdata->shouldReceive('getDate')->once();
+            $result = $getdata->getDate($data);
+            $this->assertEquals('13/10/1996',$result);
         }
     }
 ?>

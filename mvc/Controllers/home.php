@@ -80,17 +80,17 @@ include_once './mvc/DesignPatterns/Pages/Vietnamnet.php';
                 if( isset($pages) ) {
                     $pages->getUrl($_POST['getLink']);
                     $pages->crawler();
-                    echo $pages->getTitle();
+                    echo $pages->getTitle('');
                     echo "<br>";
-                    print_r( implode("", $pages->getContent() ) );
+                    print_r( implode("", $pages->getContent('') ) );
                     echo "<br>";
-                    echo $pages->getDate();
+                    echo $pages->getDate('');
                     
                 }
 
                 // them du lieu vao database
                 $db = new Model();
-                $data = $db->insertData( $pages->source, $pages->getTitle(), implode("", $pages->getContent() ), $pages->getDate() );
+                $data = $db->insertData( $pages->source, $pages->getTitle(''), implode("", $pages->getContent('') ), $pages->getDate('') );
             }
         }
 
