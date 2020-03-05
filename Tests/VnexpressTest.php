@@ -4,7 +4,7 @@
     class VnexpressTest extends TestCase { 
         public function dataTitleProvider() {
             return [
-                ['<h1 class="fon31 mgb15">hello</h1>']
+                ['<h1 class="title_news_detail mb10">hello</h1>']
             ];
         }
         /**
@@ -24,7 +24,7 @@
 
         public function dataContentProvider() {
             return [
-                ['<div id="divNewsContent" class="fon34 mt3 mr2 fon43 detail-content">hello<div class="news-tag">']
+                ['<p class="description">hello<div class="width_common box_category">']
             ];
         }
         /**
@@ -44,7 +44,7 @@
 
         public function dataDateProvider() {
             return [
-                ['<span class="fr fon7 mr2 tt-capitalize">13/10/1996<p class="detail_subtitle"></p>']
+                ['<span class="time left">13/10/1996</span>']
             ];
         }
         /**
